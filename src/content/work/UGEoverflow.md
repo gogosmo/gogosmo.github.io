@@ -19,11 +19,11 @@ tags:
 
 ---
 
-># StackOverflow Clone Project
+>### StackOverflow Clone Project
 
 In the context of our backend development course, we embarked on an exciting project that allowed us to put into practice the principles of web development and the MVC (Model-View-Controller) architecture. Our project, titled "StackOverflow Clone," aimed to create a simplified and functional version of the renowned StackOverflow platform, which serves as a popular Q&A hub for the developer community.
 
-## Technologies Used
+#### Technologies Used
 
 To successfully complete this project, we harnessed a range of cutting-edge technologies that are fundamental to web development and backend programming. Here are the key technologies we employed:
 
@@ -36,7 +36,7 @@ To successfully complete this project, we harnessed a range of cutting-edge tech
 - **Frontend**: Hotwired Turbo
 - **Styling**: Tailwind CSS
 
-## Project Objective
+#### Project Objective
 
 The primary goal of our "StackOverflow Clone" project was to create a web application that would allow users to ask questions, provide answers, and engage with other community members. Our aim was to replicate the StackOverflow experience by providing a platform where developers could share their knowledge, pose technical questions, and receive relevant answers.
 
@@ -44,4 +44,3 @@ As part of this project, we also had the exciting opportunity to develop a custo
 
 Throughout this article, we will delve into the various stages of developing our "StackOverflow Clone Project," starting with database design, the implementation of the backend using Spring Boot, the creation of the user interface with Thymeleaf and Tailwind CSS, and the deployment of our innovative search algorithm. We hope this project serves as inspiration for your own web development endeavors.
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
