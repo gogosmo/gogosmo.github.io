@@ -11,20 +11,37 @@ tags:
   - Javascript
   - Spring boot
   - Maven
-  - Tailwind CSS
-  - Thymeleaf
-  - H2
-  - Rollup
+
+
+
+
 
 
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere commodo venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam non ligula vel metus efficitur hendrerit. In hac habitasse platea dictumst. Praesent et mauris ut mi dapibus semper. Curabitur tortor justo, efficitur sit amet pretium cursus, porta eget odio. Cras ac venenatis dolor. Donec laoreet posuere malesuada. Curabitur nec mi tempor, placerat leo sit amet, tincidunt est. Quisque pellentesque venenatis magna, eget tristique nibh pulvinar in. Vestibulum vitae volutpat arcu. Aenean ut malesuada odio, sit amet pellentesque odio. Suspendisse nunc elit, blandit nec hendrerit non, aliquet at magna. Donec id leo ut nulla sagittis sodales.
+># StackOverflow Clone Project
 
-Integer vitae nibh elit. Suspendisse eget urna eu neque bibendum pharetra. Sed interdum lectus sem, in pulvinar magna dignissim vel. Quisque maximus at urna nec laoreet. Suspendisse potenti. Vestibulum rhoncus sem ut mi pellentesque, in vestibulum erat blandit. Aliquam sodales dui ac maximus consectetur. Duis quis est vehicula, imperdiet nisl nec, fermentum erat. Duis tortor diam, pharetra eu euismod in, vehicula non eros. Curabitur facilisis dui at erat ultrices gravida. In at nunc ultricies, pulvinar mi vel, sagittis mauris. Praesent pharetra posuere purus ac imperdiet. Nulla facilisi.
+In the context of our backend development course, we embarked on an exciting project that allowed us to put into practice the principles of web development and the MVC (Model-View-Controller) architecture. Our project, titled "StackOverflow Clone," aimed to create a simplified and functional version of the renowned StackOverflow platform, which serves as a popular Q&A hub for the developer community.
 
-Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
+## Technologies Used
 
-Mauris sed eros in ex maximus volutpat. Suspendisse potenti. Donec lacinia justo consectetur sagittis tempor. Proin ullamcorper nisi vitae auctor rhoncus. Sed tristique aliquam augue. Pellentesque vitae fringilla ligula. Nulla arcu elit, efficitur eu nunc malesuada, eleifend tincidunt orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer mattis orci in bibendum ultricies. Quisque a dui erat. Phasellus et vulputate ipsum. Proin metus ex, lobortis nec ornare eget, bibendum ut sapien. Aliquam in dolor lobortis, aliquam tellus a, congue augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+To successfully complete this project, we harnessed a range of cutting-edge technologies that are fundamental to web development and backend programming. Here are the key technologies we employed:
+
+- **Languages**: Java, JavaScript, Bash
+- **Framework**: Spring Boot
+- **Template Engine**: Thymeleaf
+- **Database**: H2
+- **Dependency Management**: Maven
+- **JavaScript Bundler**: Rollup
+- **Frontend**: Hotwired Turbo
+- **Styling**: Tailwind CSS
+
+## Project Objective
+
+The primary goal of our "StackOverflow Clone" project was to create a web application that would allow users to ask questions, provide answers, and engage with other community members. Our aim was to replicate the StackOverflow experience by providing a platform where developers could share their knowledge, pose technical questions, and receive relevant answers.
+
+As part of this project, we also had the exciting opportunity to develop a custom search algorithm. This aspect of the project enabled us to put our problem-solving skills into action and create an intelligent search strategy to deliver the best answers to questions posed on the platform. We had the freedom to design our own algorithm and provide a rationale for our choice.
+
+Throughout this article, we will delve into the various stages of developing our "StackOverflow Clone Project," starting with database design, the implementation of the backend using Spring Boot, the creation of the user interface with Thymeleaf and Tailwind CSS, and the deployment of our innovative search algorithm. We hope this project serves as inspiration for your own web development endeavors.
 
 Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
