@@ -15,7 +15,7 @@ tags:
   - Thymeleaf
   - H2
   - Rollup
-  - Hotwired turbo
+
 
 ---
 
