@@ -1,4 +1,4 @@
-![image](https://github.com/gogosmo/gogosmo.github.io/assets/73750131/a9f95d15-467f-45e8-aac0-0377734d4b2e)---
+---
 title: UGEoverFlow
 publishDate: 2023-04-04 00:00:00
 img: /assets/stock-4.jpg
