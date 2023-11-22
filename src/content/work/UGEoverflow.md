@@ -1,4 +1,4 @@
----
+![image](https://github.com/gogosmo/gogosmo.github.io/assets/73750131/a9f95d15-467f-45e8-aac0-0377734d4b2e)---
 title: UGEoverFlow
 publishDate: 2023-04-04 00:00:00
 img: /assets/stock-4.jpg
@@ -42,7 +42,9 @@ Throughout this article, we will delve into the various stages of developing our
 #### Project
 In our "StackOverflow Clone" project, we placed a strong emphasis on designing a robust database to store questions, answers, users, and interactions within the platform. We used H2 as the database management system and meticulously modeled the tables to ensure optimal efficiency in data storage and retrieval.
 
-<img width="1677" alt="pic-userProfil" src="https://github.com/gogosmo/gogosmo.github.io/assets/73750131/7d9e4901-32d7-4b61-9b9f-44188033087d">
+![image](https://github.com/gogosmo/gogosmo.github.io/assets/73750131/49db5dda-00a4-4640-84d5-5f2527416e44)
+
+
 
 The implementation of the backend was a pivotal step in our project. We opted for Spring Boot, a well-established Java framework, to develop our backend application. Spring Boot enabled us to rapidly create RESTful APIs, manage user permissions, and ensure data security while providing significant extensibility for future development.
 
