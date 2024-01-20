@@ -1,8 +1,8 @@
 ---
 title: Programmation Orientée Objet en Java
-publishDate: [Date de publication]
-img: [Lien vers l'image représentative de l'article]
-img_alt: [Description de l'image]
+publishDate: 2023-04-04 00:00:00
+img: /assets/stock-4.jpg
+img_alt: Soft pink and baby blue water ripples together in a subtle texture.
 description: |
   Découvrez les principes fondamentaux de la programmation orientée objet en Java,
   des types primitifs aux concepts avancés de l'héritage et du polymorphisme.
