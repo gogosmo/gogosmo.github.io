@@ -42,7 +42,7 @@ Si nous disons que "Ma voiture est une instance de la classe `Voiture`", cela si
 En résumé, une classe est un modèle, un objet est une instance spécifique de ce modèle, et une instance est simplement un synonyme d'objet. La POO permet de modéliser le monde réel en créant des classes pour représenter des concepts et en créant des objets spécifiques à partir de ces classes pour interagir avec ces concepts de manière programmatique.
 En conclusion, la programmation orientée objet en Java est un sujet vaste et essentiel pour tout développeur Java. Nous avons exploré les principes de base, les concepts avancés et les éléments clés de la POO en Java dans cet article. Avec ces connaissances, vous êtes bien équipé pour créer des applications Java robustes et modulaires.
 
-#### 2. Types Primitifs
+##### 2. Types Primitifs
 
 En programmation, un "type primitif" (ou "type de données primitif") est un type de données de base intégré dans un langage de programmation. Ces types primitifs sont utilisés pour stocker des valeurs simples comme des nombres ou des caractères. Ils sont souvent très efficaces en termes de mémoire et de performance, car ils sont directement gérés par le langage.
 Types Primitifs Couramment Utilisés :
@@ -58,9 +58,9 @@ Types Primitifs Couramment Utilisés :
     Booléens :
         boolean : Pour les valeurs booléennes true ou false, par exemple, boolean estVrai = true;.
 
-#### 3. ArrayList & Tableau
+##### 3. ArrayList & Tableau
 
-##### 3.1 Tableaux (Array)
+###### 3.1 Tableaux (Array)
 
 Les tableaux en Java sont des structures de données qui permettent de stocker une collection d'éléments de même type. Voici quelques points clés à retenir :
 Type de données fixe : Les tableaux ont une taille fixe et leur type de données est spécifié à la déclaration. Par exemple, un tableau d'entiers (int[]) ne peut contenir que des entiers.
@@ -76,7 +76,7 @@ Accès rapide par indice : Vous pouvez accéder rapidement aux éléments d'un t
     int valeur = monTableau[0];      // Accède à la valeur du premier élément
 
 ```
-##### 3.2 ArrayList
+###### 3.2 ArrayList
 
 Les ArrayList en Java sont une implémentation de la structure de données de liste dynamique. Voici quelques points clés à retenir :
 
