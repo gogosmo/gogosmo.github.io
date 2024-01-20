@@ -38,41 +38,41 @@ La délégation est un autre concept important de la programmation orientée obj
 
 Supposons que vous ayez une classe "Voiture" et une classe "Moteur". Plutôt que d'intégrer le code de gestion du moteur directement dans la classe "Voiture", vous pouvez déléguer la gestion du moteur à une instance de la classe "Moteur". 
 ```java
-public class Moteur {
-    private boolean allume;
-
-    public Moteur() {
-        this.allume = false;
+    public class Moteur {
+        private boolean allume;
+    
+        public Moteur() {
+            this.allume = false;
+        }
+    
+        public void demarrer() {
+            allume = true;
+            System.out.println("Le moteur démarre.");
+        }
+    
+        public void arreter() {
+            allume = false;
+            System.out.println("Le moteur s'arrête.");
+        }
     }
-
-    public void demarrer() {
-        allume = true;
-        System.out.println("Le moteur démarre.");
+    
+    public class Voiture {
+        private String modele;
+        private Moteur moteur; // Délégation à la classe Moteur
+    
+        public Voiture(String modele) {
+            this.modele = modele;
+            this.moteur = new Moteur(); // Création d'une instance de Moteur
+        }
+    
+        public void demarrer() {
+            moteur.demarrer(); // Délégation de la commande au moteur
+        }
+    
+        public void arreter() {
+            moteur.arreter(); // Délégation de la commande au moteur
+        }
     }
-
-    public void arreter() {
-        allume = false;
-        System.out.println("Le moteur s'arrête.");
-    }
-}
-
-public class Voiture {
-    private String modele;
-    private Moteur moteur; // Délégation à la classe Moteur
-
-    public Voiture(String modele) {
-        this.modele = modele;
-        this.moteur = new Moteur(); // Création d'une instance de Moteur
-    }
-
-    public void demarrer() {
-        moteur.demarrer(); // Délégation de la commande au moteur
-    }
-
-    public void arreter() {
-        moteur.arreter(); // Délégation de la commande au moteur
-    }
-}
 
 ```
 
@@ -81,43 +81,45 @@ public class Voiture {
 L'héritage est l'un des concepts clés de la programmation orientée objet (POO) qui permet à une classe d'hériter des caractéristiques (attributs et méthodes) d'une autre classe appelée "classe parente" ou "classe de base". En Java, cela se fait en créant une nouvelle classe (classe dérivée ou sous-classe) qui hérite des propriétés d'une classe existante (classe de base).
 
 ```java
-public class Animal {
-    private String nom;
-    private int age;
 
-    public Animal(String nom, int age) {
-        this.nom = nom;
-        this.age = age;
+    public class Animal {
+        private String nom;
+        private int age;
+    
+        public Animal(String nom, int age) {
+            this.nom = nom;
+            this.age = age;
+        }
+    
+        public void manger() {
+            System.out.println("L'animal mange.");
+        }
+    
+        public void dormir() {
+            System.out.println("L'animal dort.");
+        }
+    }
+    
+    public class Chien extends Animal {
+        public Chien(String nom, int age) {
+            super(nom, age); // Appel du constructeur de la classe parente (Animal)
+        }
+    
+        public void aboyer() {
+            System.out.println("Le chien aboie.");
+        }
+    }
+    
+    public class Chat extends Animal {
+        public Chat(String nom, int age) {
+            super(nom, age); // Appel du constructeur de la classe parente (Animal)
+        }
+    
+        public void miauler() {
+            System.out.println("Le chat miaule.");
+        }
     }
 
-    public void manger() {
-        System.out.println("L'animal mange.");
-    }
-
-    public void dormir() {
-        System.out.println("L'animal dort.");
-    }
-}
-
-public class Chien extends Animal {
-    public Chien(String nom, int age) {
-        super(nom, age); // Appel du constructeur de la classe parente (Animal)
-    }
-
-    public void aboyer() {
-        System.out.println("Le chien aboie.");
-    }
-}
-
-public class Chat extends Animal {
-    public Chat(String nom, int age) {
-        super(nom, age); // Appel du constructeur de la classe parente (Animal)
-    }
-
-    public void miauler() {
-        System.out.println("Le chat miaule.");
-    }
-}
 ```
 
 ##### 3.4 Le Polymorphisme Objet
@@ -125,37 +127,38 @@ public class Chat extends Animal {
 Le polymorphisme est un concept puissant de la programmation orientée objet (POO) qui permet à un objet de posséder plusieurs types. Cela signifie qu'un même nom de méthode peut être utilisé pour effectuer différentes actions en fonction du type de l'objet sur lequel elle est appelée. En d'autres termes, une même méthode peut avoir différents comportements en fonction du contexte.
 
 ```java
-public abstract class Forme {
-    public abstract double calculerAire(); // Méthode abstraite, doit être redéfinie dans les sous-classes
-}
 
-public class Cercle extends Forme {
-    private double rayon;
-
-    public Cercle(double rayon) {
-        this.rayon = rayon;
+    public abstract class Forme {
+        public abstract double calculerAire(); // Méthode abstraite, doit être redéfinie dans les sous-classes
     }
-
-    @Override // pour la surcharge de la methode
-    public double calculerAire() {
-        return Math.PI * rayon * rayon;
+    
+    public class Cercle extends Forme {
+        private double rayon;
+    
+        public Cercle(double rayon) {
+            this.rayon = rayon;
+        }
+    
+        @Override // pour la surcharge de la methode
+        public double calculerAire() {
+            return Math.PI * rayon * rayon;
+        }
     }
-}
-
-public class Rectangle extends Forme {
-    private double longueur;
-    private double largeur;
-
-    public Rectangle(double longueur, double largeur) {
-        this.longueur = longueur;
-        this.largeur = largeur;
+    
+    public class Rectangle extends Forme {
+        private double longueur;
+        private double largeur;
+    
+        public Rectangle(double longueur, double largeur) {
+            this.longueur = longueur;
+            this.largeur = largeur;
+        }
+    
+        @Override
+        public double calculerAire() {
+            return longueur * largeur;
+        }
     }
-
-    @Override
-    public double calculerAire() {
-        return longueur * largeur;
-    }
-}
 
 ```
 #### 4. Types Primitifs
@@ -183,13 +186,14 @@ Type de données fixe : Les tableaux ont une taille fixe et leur type de donnée
 Taille fixe : Une fois qu'un tableau est créé avec une taille donnée, sa taille ne peut pas être modifiée.
 Accès rapide par indice : Vous pouvez accéder rapidement aux éléments d'un tableau en utilisant leur indice. Par exemple, monTableau[0] accède au premier élément du tableau.
 
-Exemple :
+**Exemple :**
 
 ```java
 
-    int[] monTableau = new int[5]; // Crée un tableau d'entiers de taille 5
-    monTableau[0] = 10; // Affecte la valeur 10 au premier élément
-    int valeur = monTableau[0]; // Accède à la valeur du premier élément
+    int[] monTableau = new int[5];   // Crée un tableau d'entiers de taille 5
+    monTableau[0] = 10;              // Affecte la valeur 10 au premier élément
+    int valeur = monTableau[0];      // Accède à la valeur du premier élément
+
 ```
 ##### 5.2 ArrayList
 
@@ -199,7 +203,7 @@ Type de données dynamique : Les ArrayList peuvent stocker des éléments de n'i
 Taille dynamique : Contrairement aux tableaux, les ArrayList peuvent augmenter ou réduire leur taille dynamiquement en fonction des éléments qu'ils contiennent.
 Méthodes de manipulation : Les ArrayList offrent des méthodes pour ajouter, supprimer, rechercher et manipuler des éléments facilement.
 
-Exemple :
+**Exemple :**
 
 ```java
 
@@ -214,9 +218,10 @@ Exemple :
     maListe.add(30);
 
     // Accède aux éléments
-    int premierElement = maListe.get(0); // Accède au premier élément
-    int taille = maListe.size(); // Obtient la taille de la liste
-    maListe.remove(1); // Supprime le deuxième élément
+    int premierElement = maListe.get(0);   // Accède au premier élément
+    int taille = maListe.size();           // Obtient la taille de la liste
+    maListe.remove(1);                     // Supprime le deuxième élément
+
 ```
 
 Différences clés :
