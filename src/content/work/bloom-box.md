@@ -60,7 +60,7 @@ Types Primitifs Couramment Utilisés :
 
 ##### 3. ArrayList & Tableau
 
-###### 3.1 Tableaux (Array)
+##### 3.1 Tableaux (Array)
 
 Les tableaux en Java sont des structures de données qui permettent de stocker une collection d'éléments de même type. Voici quelques points clés à retenir :
 Type de données fixe : Les tableaux ont une taille fixe et leur type de données est spécifié à la déclaration. Par exemple, un tableau d'entiers (int[]) ne peut contenir que des entiers.
@@ -76,7 +76,7 @@ Accès rapide par indice : Vous pouvez accéder rapidement aux éléments d'un t
     int valeur = monTableau[0];      // Accède à la valeur du premier élément
 
 ```
-###### 3.2 ArrayList
+##### 3.2 ArrayList
 
 Les ArrayList en Java sont une implémentation de la structure de données de liste dynamique. Voici quelques points clés à retenir :
 
