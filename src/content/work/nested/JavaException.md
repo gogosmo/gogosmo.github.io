@@ -54,10 +54,10 @@ Vous pouvez lancer manuellement une exception en utilisant le mot-clé throw. Ce
 ```
 #### Bonnes Pratiques en Matière de Gestion des Exceptions
 
-    Utilisez des exceptions pour gérer les erreurs prévisibles.
-    Évitez de capturer des exceptions de manière excessive. Traitez uniquement les exceptions que vous pouvez gérer.
-    Utilisez des logs pour enregistrer des informations sur les exceptions.
-    Créez des exceptions personnalisées pour des erreurs spécifiques à votre application.
+- Utilisez des exceptions pour gérer les erreurs prévisibles.
+- Évitez de capturer des exceptions de manière excessive. Traitez uniquement les exceptions que vous pouvez gérer.
+- Utilisez des logs pour enregistrer des informations sur les exceptions.
+- Créez des exceptions personnalisées pour des erreurs spécifiques à votre application.
 
 #### Conclusion
 
