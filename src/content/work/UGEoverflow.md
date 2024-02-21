@@ -11,7 +11,6 @@ tags:
   - Javascript
   - Spring boot
   - Maven
-  - Scala
 
 ---
 
