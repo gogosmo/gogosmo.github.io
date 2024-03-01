@@ -13,7 +13,7 @@ tags:
 <!-- > Tell me and I forget. Teach me and I remember. Involve me and I learn. -->
 
 > #### Gestion de la Balance Sheet avec Python: Analyse Financière Simplifiée
-[Lien vers le github pour le notebook](https://github.com/Gogo-IGM-BK/Python-Data/blob/GeoViews/README.md)
+[Lien vers le github pour le notebook](https://github.com/gogosmo/Data-Analyse/blob/main/Gestion%20Balance%20sheet.ipynb)
 
 Dans cet exercice, nous avons abordé la création d'une classe de gestion de la Balance Sheet en utilisant Python, mettant en œuvre diverses fonctionnalités pour analyser les informations financières d'une entreprise. Imaginons que nous travaillons pour une société comptable et que nous devons automatiser le processus de gestion de ces données.
 
