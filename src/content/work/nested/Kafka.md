@@ -18,7 +18,7 @@ Kafka est un système de messagerie distribuée qui permet de publier, stocker e
 
 #### 2. Les Cas d'Utilisation de Kafka
 
-#####  Streaming en Temps Réel
+######  Streaming en Temps Réel
 
 Kafka est souvent utilisé pour le traitement des données en continu, comme les logs d'application, les événements d'utilisateurs (clics) ou les métriques système, permettant une prise de décision instantanée.
 
