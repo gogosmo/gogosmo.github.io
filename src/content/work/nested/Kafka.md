@@ -18,34 +18,34 @@ Kafka est un système de messagerie distribuée qui permet de publier, stocker e
 
 #### 2. Les Cas d'Utilisation de Kafka
 
-##### 2.1 Streaming en Temps Réel
+#####  Streaming en Temps Réel
 
 Kafka est souvent utilisé pour le traitement des données en continu, comme les logs d'application, les événements d'utilisateurs (clics) ou les métriques système, permettant une prise de décision instantanée.
 
-##### 2.2 Intégration de Systèmes
+#####  Intégration de Systèmes
 
 Il agit comme un middleware pour connecter différentes applications entre elles, facilitant ainsi le transfert de données dans des environnements hétérogènes.
 
-##### 2.3 Gestion des Logs et des Événements
+#####  Gestion des Logs et des Événements
 
 Kafka centralise les logs d'événements provenant de diverses sources, ce qui permet une surveillance proactive et des analyses avancées.
 
-##### 2.4 Collecte de Données IoT
+#####  Collecte de Données IoT
 
 Dans les scénarios IoT, Kafka gère les flux provenant de millions de capteurs ou appareils, offrant une plateforme stable pour le traitement de ces données massives.
 
 #### 3. Les Concepts Clés de Kafka
 
-##### 3.1 Topics et Partitions
+#####  Topics et Partitions
 
 Les messages dans Kafka sont organisés en **topics**, qui sont divisés en **partitions** pour permettre un traitement parallèle et une meilleure scalabilité.
 
-##### 3.2 Producers et Consumers
+#####  Producers et Consumers
 
 - Un **producer** est une application qui écrit des messages dans un topic Kafka.  
 - Un **consumer** lit les messages d'un topic, souvent groupé avec d'autres consommateurs pour un traitement distribué.
 
-##### 3.3 Brokers et ZooKeeper
+#####  Brokers et ZooKeeper
 
 - Un **broker** est un serveur Kafka qui stocke et distribue les messages.  
 - **ZooKeeper** est utilisé pour gérer les métadonnées et coordonner les brokers, bien que Kafka évolue pour fonctionner sans dépendance à ZooKeeper.
