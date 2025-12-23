@@ -1,7 +1,7 @@
 ---
 title: Python Data Science Learning Project
 publishDate: 2020-03-02 00:00:00
-img: /assets/stock-1.jpg
+img: /assets/python-data-science.png
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
   Python data science learning project.
