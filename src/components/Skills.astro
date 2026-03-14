@@ -3,28 +3,62 @@ import Icon from './Icon.astro';
 ---
 
 <section class="box skills">
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Software Engineering</h2>
-		<p>I have specialized in architecture and software engineering, enabling me to design and develop innovative software solutions.</p>
+	<div class="skill-item">
+		<div class="skill-header">
+			<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
+			<h2>Software Engineering</h2>
+		</div>
+		<p>Specialized in backend development, API design, and software architecture — from startups to large corporations.</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Data Analysis</h2>
-		<p>
-			 With a master's degree in Data Engineering and Artificial Intelligence, I aim to help business teams leverage their data to optimize operations and support strategic decision-making.
-I use my skills in data and AI to turn data into actionable insights and drive high-value projects.
-		</p>
-	</div> 
-
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Project Management</h2>
-		<p>With over three years of experience working in data project teams, 
-		I have developed strong expertise in project management, coordinating between business and development teams, 
-		and delivering concrete solutions.</p>
+	<div class="skill-item">
+		<div class="skill-header">
+			<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
+			<h2>Data & AI</h2>
+		</div>
+		<p>Master's degree in Data Engineering & AI. I turn raw data into actionable insights using Python, SQL, ETL pipelines, and machine learning models.</p>
+	</div>
+	<div class="skill-item">
+		<div class="skill-header">
+			<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+			<h2>Project Management</h2>
+		</div>
+		<p>3+ years bridging technical and business teams. Experienced in agile methods, sprint planning, and delivering concrete solutions on time.</p>
+	</div>
+	<div class="skill-item">
+		<div class="skill-header">
+			<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
+			<h2>AI Automation</h2>
+		</div>
+		<p>Building intelligent workflows with n8n, Make, and AI agents (Claude, Gemini). From WhatsApp bots to automated data pipelines and Airtable dashboards.</p>
 	</div>
 </section>
+
+<script>
+	const items = document.querySelectorAll<HTMLElement>('.skill-item');
+	items.forEach(item => {
+		item.style.opacity = '0';
+		item.style.transform = 'translateY(24px)';
+		item.style.transition = 'none';
+	});
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				items.forEach((item, i) => {
+					setTimeout(() => {
+						item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+						item.style.opacity = '1';
+						item.style.transform = 'translateY(0)';
+					}, i * 150);
+				});
+				observer.disconnect();
+			}
+		});
+	}, { threshold: 0.15 });
+
+	const section = document.querySelector('.skills');
+	if (section) observer.observe(section);
+</script>
 
 <style>
 	.box {
@@ -41,8 +75,21 @@ I use my skills in data and AI to turn data into actionable insights and drive h
 		gap: 3rem;
 	}
 
+	.skill-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.skill-header {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
 	.skills h2 {
 		font-size: var(--text-lg);
+		margin: 0;
 	}
 
 	.skills p {
@@ -52,17 +99,17 @@ I use my skills in data and AI to turn data into actionable insights and drive h
 	@media (min-width: 50em) {
 		.box {
 			border-radius: 1.5rem;
-			padding: 2.5rem;
+			padding: 2rem;
 		}
 
 		.skills {
 			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem 4rem;
 		}
 
 		.skills h2 {
-			font-size: var(--text-2xl);
+			font-size: var(--text-lg);
 		}
 	}
 </style>

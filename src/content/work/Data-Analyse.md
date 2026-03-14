@@ -3,6 +3,7 @@ title: Data Analyse With Python
 publishDate: 2024-03-02 00:00:00
 img: /assets/Data-analyse2025.png
 img_alt: Iridescent ripples of a bright blue and pink liquid
+video: /assets/data-analyse-demo.mp4
 description: |
   Data Analyse With Python
 tags:

@@ -16,9 +16,10 @@ import PortfolioPreview from '../components/PortfolioPreview.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Skills from '../components/Skills.astro';
 
-// Content Fetching: List four most recent work projects
-const projects = (await getCollection('work'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+// Content Fetching: 4 random work projects
+const allProjects = await getCollection('work');
+const projects = allProjects
+	.sort(() => Math.random() - 0.5)
 	.slice(0, 4);
 
 // Full Astro Component Syntax:
@@ -26,24 +27,24 @@ const projects = (await getCollection('work'))
 ---
 
 <BaseLayout>
-	<div class="stack gap-20 lg:gap-48">
+	<div class="stack gap-8 lg:gap-20">
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-					title="Hello, my name is Jughurta Gahlouz"
-					tagline="I am a Software and Data Engineer based in Paris, France."
+					title="Hi, I'm Jughurta Gahlouz"
+					tagline="Software & Data Engineer · AI Automation Builder · Based in Paris 🇫🇷"
 					align="start"
-					
 				>
 					<div class="roles">
 						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-						<Pill><Icon icon="terminal-window" size="1.33em" /> Data Analyst</Pill>
-						<Pill><Icon icon="terminal-window" size="1.33em" /> IT Project Manager</Pill>
+						<Pill><Icon icon="trophy" size="1.33em" /> Data & AI</Pill>
+						<Pill><Icon icon="rocket-launch" size="1.33em" /> AI Automation</Pill>
+						<Pill><Icon icon="strategy" size="1.33em" /> Project Manager</Pill>
 					</div>
 				</Hero>
 
 				<img
-					alt="Jughurta"
+					alt="Jughurta Gahlouz"
 					width="480"
 					height="620"
 					src="/assets/image_pro.jpg"
@@ -53,11 +54,62 @@ const projects = (await getCollection('work'))
 			<Skills />
 		</div>
 
-		<main class="wrapper stack gap-20 lg:gap-48">
+		<main class="wrapper stack gap-8 lg:gap-20">
+
+			<section class="section tech-stack">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Tech Stack</h3>
+					<p>Technologies I use to build, automate, and analyse.</p>
+				</header>
+				<div class="tech-grid">
+					<div class="tech-category">
+						<div class="tech-category-header">
+							<Icon icon="trophy" color="var(--accent-regular)" size="1.5rem" gradient />
+							<h4>Data & AI</h4>
+						</div>
+						<div class="tech-pills">
+							<span class="tech-pill">Python</span>
+							<span class="tech-pill">SQL</span>
+							<span class="tech-pill">Pandas</span>
+							<span class="tech-pill">Scikit-learn</span>
+							<span class="tech-pill">Apache Kafka</span>
+							<span class="tech-pill">ETL</span>
+						</div>
+					</div>
+					<div class="tech-category">
+						<div class="tech-category-header">
+							<Icon icon="rocket-launch" color="var(--accent-regular)" size="1.5rem" gradient />
+							<h4>AI Automation</h4>
+						</div>
+						<div class="tech-pills">
+							<span class="tech-pill accent">n8n</span>
+							<span class="tech-pill accent">Claude API</span>
+							<span class="tech-pill accent">Gemini</span>
+							<span class="tech-pill accent">Make</span>
+							<span class="tech-pill accent">Airtable</span>
+							<span class="tech-pill accent">Supabase</span>
+						</div>
+					</div>
+					<div class="tech-category">
+						<div class="tech-category-header">
+							<Icon icon="terminal-window" color="var(--accent-regular)" size="1.5rem" gradient />
+							<h4>Software & Cloud</h4>
+						</div>
+						<div class="tech-pills">
+							<span class="tech-pill">Git</span>
+							<span class="tech-pill">Docker</span>
+							<span class="tech-pill">PostgreSQL</span>
+							<span class="tech-pill">MongoDB</span>
+							<span class="tech-pill">REST APIs</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Selected Work</h3>
-					<p>Take a look below at some of my accomplishments."</p>
+					<p>A selection of projects in data, software, and AI automation.</p>
 				</header>
 
 				<div class="gallery">
@@ -107,12 +159,95 @@ const projects = (await getCollection('work'))
 	</div>
 </BaseLayout>
 
+<script>
+	function sleep(ms: number) {
+		return new Promise(r => setTimeout(r, ms));
+	}
+
+	async function typeWriter(el: Element, text: string, speed: number) {
+		el.textContent = '';
+		for (const char of text) {
+			el.textContent += char;
+			await sleep(speed);
+		}
+	}
+
+	async function runHeroAnimation() {
+		const title   = document.querySelector('.hero .title') as HTMLElement | null;
+		const tagline = document.querySelector('.hero .tagline') as HTMLElement | null;
+		const pills   = document.querySelectorAll<HTMLElement>('.roles .pill');
+
+		if (!title || !tagline) return;
+
+		const titleText   = title.textContent ?? '';
+		const taglineText = tagline.textContent ?? '';
+
+		// Hide everything to start
+		title.textContent   = '';
+		tagline.textContent = '';
+		title.style.minHeight   = '1em';
+		tagline.style.minHeight = '1em';
+		pills.forEach(p => { p.style.opacity = '0'; p.style.transform = 'translateY(8px)'; });
+
+		await sleep(300);
+		await typeWriter(title, titleText, 55);
+
+		await sleep(150);
+		await typeWriter(tagline, taglineText, 25);
+
+		await sleep(200);
+		for (const pill of pills) {
+			pill.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+			pill.style.opacity    = '1';
+			pill.style.transform  = 'translateY(0)';
+			await sleep(180);
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', runHeroAnimation);
+
+	// Cards stagger animation
+	const cards = document.querySelectorAll<HTMLElement>('.gallery li');
+	cards.forEach(card => {
+		card.style.opacity = '0';
+		card.style.transform = 'translateY(32px)';
+		card.style.transition = 'none';
+	});
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				cards.forEach((card, i) => {
+					setTimeout(() => {
+						card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+						card.style.opacity = '1';
+						card.style.transform = 'translateY(0)';
+					}, i * 150);
+				});
+				observer.disconnect();
+			}
+		});
+	}, { threshold: 0.1 });
+
+	const gallery = document.querySelector('.gallery');
+	if (gallery) observer.observe(gallery);
+</script>
+
 <style>
 	.hero {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;
+	}
+
+	.hero :global(.title) {
+		font-size: var(--text-2xl);
+	}
+
+	.hero :global(.tagline) {
+		font-size: var(--text-base);
+		white-space: nowrap;
 	}
 
 	.roles {
@@ -128,9 +263,13 @@ const projects = (await getCollection('work'))
 	}
 
 	@media (min-width: 50em) {
+		.hero :global(.title) {
+			font-size: var(--text-3xl);
+		}
+
 		.hero {
 			display: grid;
-			grid-template-columns: 6fr 4fr;
+			grid-template-columns: 7fr 3fr;
 			padding-inline: 2.5rem;
 			gap: 3.75rem;
 		}
@@ -139,12 +278,15 @@ const projects = (await getCollection('work'))
 			margin-top: 0.5rem;
 			display: flex;
 			gap: 0.5rem;
+			flex-wrap: wrap;
 		}
 
 		.hero img {
 			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
+			max-height: 320px;
+			border-radius: 3rem;
 			object-fit: cover;
+			align-self: center;
 		}
 	}
 
@@ -199,11 +341,11 @@ const projects = (await getCollection('work'))
 		.section {
 			grid-template-columns: repeat(4, 1fr);
 			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
-			gap: 5rem;
+			gap: 2rem;
 		}
 
 		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
+			grid-template-areas: 'header header header header' 'cta cta cta cta' 'gallery gallery gallery gallery';
 		}
 
 		.section-header {
@@ -212,12 +354,12 @@ const projects = (await getCollection('work'))
 		}
 
 		.section-header h3 {
-			font-size: var(--text-4xl);
+			font-size: var(--text-2xl);
 		}
 
 		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
+			justify-self: center;
+			text-align: center;
 		}
 
 		.gallery {
@@ -226,6 +368,102 @@ const projects = (await getCollection('work'))
 
 		.cta {
 			grid-area: cta;
+			display: flex;
+			justify-content: center;
+		}
+
+		.cta :global(a) {
+			padding: 0.25rem 0.75rem;
+			font-size: var(--text-sm);
+			border-radius: 99rem;
+		}
+	}
+
+	/* ====================================================== */
+
+	/* Tech Stack Section */
+	.tech-stack {
+		display: flex !important;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+		text-align: center;
+	}
+
+	.tech-stack .section-header {
+		text-align: center;
+		justify-self: center;
+	}
+
+	.tech-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		width: 100%;
+	}
+
+	.tech-category {
+		background: var(--gray-999_40);
+		border: 1px solid var(--gray-800);
+		border-radius: 0.75rem;
+		padding: 1.25rem 1.5rem;
+		text-align: left;
+	}
+
+	.tech-category-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.tech-category h4 {
+		font-size: var(--text-sm);
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent-regular);
+		margin: 0;
+	}
+
+	.tech-pills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.tech-pill {
+		font-size: var(--text-sm);
+		padding: 0.25rem 0.75rem;
+		border-radius: 99rem;
+		border: 1px solid var(--gray-700);
+		color: var(--gray-200);
+		background: var(--gray-900);
+	}
+
+	.tech-pill.accent {
+		border-color: var(--accent-regular);
+		color: #ffffff;
+		background: color-mix(in srgb, var(--accent-dark) 40%, transparent);
+	}
+
+	@media (min-width: 50em) {
+		.tech-stack {
+			display: flex !important;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.tech-grid {
+			flex-direction: row;
+			gap: 1.5rem;
+			width: 100%;
+		}
+
+		.tech-category {
+			flex: 1;
+			border-radius: 1.5rem;
+			padding: 1.5rem 2rem;
 		}
 	}
 

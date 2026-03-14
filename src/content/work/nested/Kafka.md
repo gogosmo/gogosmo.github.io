@@ -3,6 +3,7 @@ title: Kafka
 publishDate: 2023-04-04 00:00:00
 img: /assets/kafka.jpg
 img_alt: Illustration of Kafka's distributed message broker architecture.
+video: /assets/kafka-demo.mp4
 description: |
   Découvrez les principes fondamentaux de Kafka.
 

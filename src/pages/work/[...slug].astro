@@ -5,7 +5,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 import ContactCTA from '../../components/ContactCTA.astro';
 import Hero from '../../components/Hero.astro';
-import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
 
 interface Props {
@@ -32,8 +31,7 @@ const { Content } = await entry.render();
 		<div class="stack gap-15">
 			<header>
 				<div class="wrapper stack gap-2">
-					<a class="back-link" href="/work/"><Icon icon="arrow-left" /> Work</a>
-					<Hero title={entry.data.title} align="start">
+					<Hero title={entry.data.title} align="center">
 						<div class="details">
 							<div class="tags">
 								{entry.data.tags.map((t) => <Pill>{t}</Pill>)}
@@ -45,7 +43,10 @@ const { Content } = await entry.render();
 			</header>
 			<main class="wrapper">
 				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
+					{entry.data.video
+					? <video class="work-video" src={entry.data.video} autoplay loop muted playsinline />
+					: entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />
+				}
 					<div class="content">
 						<Content />
 					</div>
@@ -58,31 +59,41 @@ const { Content } = await entry.render();
 
 <style>
 	header {
-		padding-bottom: 2.5rem;
+		padding-top: 0;
+		padding-bottom: 1.5rem;
 		border-bottom: 1px solid var(--gray-800);
 	}
 
-	.back-link {
-		display: none;
+	header :global(.title) {
+		font-size: var(--text-xl);
 	}
 
-	.details {
+	@media (min-width: 50em) {
+		header :global(.title) {
+			font-size: var(--text-2xl);
+		}
+	}
+
+.details {
 		display: flex;
 		flex-direction: column;
 		padding: 0.5rem;
-		gap: 1.5rem;
-		justify-content: space-between;
+		gap: 0.75rem;
 		align-items: center;
 	}
 
 	.tags {
 		display: flex;
 		gap: 0.5rem;
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 
 	.description {
-		font-size: var(--text-lg);
+		font-size: var(--text-sm);
 		max-width: 54ch;
+		text-align: center;
+		color: var(--gray-300);
 	}
 
 	.content {
@@ -94,11 +105,20 @@ const { Content } = await entry.render();
 		margin-top: 1rem;
 	}
 
-	.content :global(h1),
-	.content :global(h2),
+	.content :global(h1) {
+		font-size: var(--text-xl);
+		margin: 1.5rem 0;
+	}
+
+	.content :global(h2) {
+		font-size: var(--text-lg);
+		margin: 1.5rem 0;
+	}
+
 	.content :global(h3),
 	.content :global(h4),
 	.content :global(h5) {
+		font-size: var(--text-md);
 		margin: 1.5rem 0;
 	}
 
@@ -109,14 +129,27 @@ const { Content } = await entry.render();
 		border: 1px solid var(--gray-800);
 	}
 
+	.work-video {
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-sm);
+		border: 1px solid var(--gray-800);
+		width: 100%;
+		max-width: 480px;
+		display: block;
+		margin-inline: auto;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+
 	.content :global(blockquote) {
-		font-size: var(--text-lg);
+		font-size: var(--text-base);
 		font-family: var(--font-brand);
-		font-weight: 600;
-		line-height: 1.1;
+		font-weight: 400;
+		font-style: italic;
+		line-height: 1.4;
 		padding-inline-start: 1.5rem;
 		border-inline-start: 0.25rem solid var(--accent-dark);
-		color: var(--gray-0);
+		color: var(--gray-300);
 	}
 
 	.back-link,
@@ -126,26 +159,19 @@ const { Content } = await entry.render();
 		transition: text-decoration-color var(--theme-transition);
 	}
 
-	.back-link:hover,
-	.back-link:focus,
 	.content :global(a:hover),
 	.content :global(a:focus) {
 		text-decoration-color: currentColor;
 	}
 
 	@media (min-width: 50em) {
-		.back-link {
-			display: block;
-			align-self: flex-start;
-		}
-
 		.details {
-			flex-direction: row;
-			gap: 2.5rem;
+			flex-direction: column;
+			gap: 0.75rem;
 		}
 
 		.content :global(blockquote) {
-			font-size: var(--text-2xl);
+			font-size: var(--text-base);
 		}
 	}
 </style>
