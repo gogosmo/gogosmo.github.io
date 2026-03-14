@@ -22,18 +22,97 @@ const projects = (await getCollection('work')).sort(
 			<Hero
 				title="My Work"
 				tagline="See my most recent projects below to get an idea of my past experience."
-				align="start"
+				align="center"
 			/>
-			<Grid variant="offset">
-				{
-					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
-						</li>
-					))
-				}
-			</Grid>
+			<section class="section with-background">
+				<div class="gallery">
+					<Grid variant="offset">
+						{
+							projects.map((project) => (
+								<li>
+									<PortfolioPreview project={project} />
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+			</section>
 		</main>
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
+<script>
+	// Cards stagger animation
+	const cards = document.querySelectorAll<HTMLElement>('.gallery li');
+	cards.forEach(card => {
+		card.style.opacity = '0';
+		card.style.transform = 'translateY(32px)';
+		card.style.transition = 'none';
+	});
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				cards.forEach((card, i) => {
+					setTimeout(() => {
+						card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+						card.style.opacity = '1';
+						card.style.transform = 'translateY(0)';
+					}, i * 150);
+				});
+				observer.disconnect();
+			}
+		});
+	}, { threshold: 0.1 });
+
+	const gallery = document.querySelector('.gallery');
+	if (gallery) observer.observe(gallery);
+</script>
+
+<style>
+	main :global(h1.title) {
+		font-size: var(--text-xl);
+	}
+
+	main :global(.tagline) {
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+		text-align: center;
+	}
+
+	@media (min-width: 50em) {
+		main :global(h1.title) {
+			font-size: var(--text-2xl);
+		}
+	}
+
+	.section {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.with-background {
+		position: relative;
+	}
+
+	.with-background::before {
+		--hero-bg: var(--bg-image-subtle-2);
+
+		content: '';
+		position: absolute;
+		pointer-events: none;
+		left: 50%;
+		width: 100vw;
+		aspect-ratio: calc(2.25 / var(--bg-scale));
+		top: 0;
+		transform: translateY(-75%) translateX(-50%);
+		background:
+			url('/assets/backgrounds/noise.png') top center/220px repeat,
+			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+			var(--gray-999);
+		background-blend-mode: overlay, normal, normal, normal;
+		mix-blend-mode: var(--bg-blend-mode);
+		z-index: -1;
+	}
+</style>
