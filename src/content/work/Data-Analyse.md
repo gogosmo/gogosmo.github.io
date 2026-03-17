@@ -1,11 +1,14 @@
 ---
-title: Data Analyse With Python 
+title: Data Analyse With Python
+title_fr: Analyse de Données avec Python
 publishDate: 2024-03-02 00:00:00
 img: /assets/Data-analyse2025.png
 img_alt: Iridescent ripples of a bright blue and pink liquid
 video: /assets/data-analyse-demo.mp4
 description: |
   Data Analyse With Python
+description_fr: |
+  Analyse de données financières avec Python — gestion de bilan comptable, calcul de ratios et automatisation des analyses.
 tags:
   - Data Analyse
   - Dev

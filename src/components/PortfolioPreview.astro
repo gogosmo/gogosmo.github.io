@@ -3,13 +3,18 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
 	project: CollectionEntry<'work'>;
+	lang?: 'en' | 'fr';
 }
 
+const { lang = 'en' } = Astro.props;
 const { data, slug } = Astro.props.project;
+
+const href = lang === 'fr' ? `/fr/work/${slug}` : `/work/${slug}`;
+const title = lang === 'fr' && data.title_fr ? data.title_fr : data.title;
 ---
 
-<a class="card" href={`/work/${slug}`}>
-	<span class="title">{data.title}</span>
+<a class="card" href={href}>
+	<span class="title">{title}</span>
 	{data.video
 		? <video src={data.video} autoplay loop muted playsinline />
 		: <img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />

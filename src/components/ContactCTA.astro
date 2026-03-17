@@ -1,12 +1,17 @@
 ---
 import CallToAction from './CallToAction.astro';
 import Icon from './Icon.astro';
+
+const {
+	title = 'Interested in working together?',
+	cta = 'Send Me a Message',
+} = Astro.props;
 ---
 
 <aside>
-	<h2>Interested in working together?</h2>
+	<h2>{title}</h2>
 	<CallToAction href="mailto:jugogahlouz@gmail.com">
-		Send Me a Message
+		{cta}
 		<Icon icon="paper-plane-tilt" size="1.2em" />
 	</CallToAction>
 </aside>

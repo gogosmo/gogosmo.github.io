@@ -1,11 +1,14 @@
 ---
 title: N8N AI Automation Workflow
+title_fr: Automatisation IA avec N8N
 publishDate: 2024-06-01 00:00:00
 img: /assets/kafka.jpg
 img_alt: N8N automation workflow demo
 video: /assets/n8n-demo.mp4
 description: |
   Build intelligent automation workflows with n8n, Claude API, and AI agents.
+description_fr: |
+  Construire des workflows d'automatisation intelligents avec n8n, l'API Claude et des agents IA.
 tags:
   - n8n
   - AI Automation

@@ -1,10 +1,12 @@
 ---
 title: Python Optimization Techniques
+title_fr: Techniques d'Optimisation Python
 publishDate: 2024-01-15
 img: /assets/python-data-science.png
 img_alt: Python optimization techniques
 video: /assets/optimisation-python.mp4
 description: A comprehensive guide to optimization methods in Python — LP, ILP, dynamic programming, combinatorics, multi-objective, and game theory.
+description_fr: Guide complet des méthodes d'optimisation en Python — programmation linéaire, entière, dynamique, combinatoire, multi-objectifs et théorie des jeux.
 tags:
   - Python
   - Optimization

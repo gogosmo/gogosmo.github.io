@@ -1,10 +1,14 @@
 ---
-title: SQL 
+title: SQL
+title_fr: SQL
 publishDate: 2020-03-04 00:00:00
 img: /assets/SQL.png
 img_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
+video: /assets/sql-demo.mp4
 description: |
   We developed a virtual showcase for the softest bedding imaginable.
+description_fr: |
+  Maîtrisez SQL de zéro à l'avancé — requêtes, jointures, agrégations, vues, procédures stockées et optimisation des performances.
 tags:
   - Design
   - Dev

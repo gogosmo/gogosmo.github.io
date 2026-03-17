@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Hero from '../../components/Hero.astro';
+
+const gammaUrl = '#';
+
+const slides = [
+	{ src: '/assets/prez/slide-1.png',  alt: 'Slide 1' },
+	{ src: '/assets/prez/slide-2.png',  alt: 'Slide 2' },
+	{ src: '/assets/prez/slide-3.jpeg', alt: 'Slide 3' },
+	{ src: '/assets/prez/slide-4.jpeg', alt: 'Slide 4' },
+	{ src: '/assets/prez/slide-5.jpeg', alt: 'Slide 5' },
+	{ src: '/assets/prez/slide-6.jpeg', alt: 'Slide 6' },
+	{ src: '/assets/prez/slide-7.jpeg', alt: 'Slide 7' },
+	{ src: '/assets/prez/slide-8.jpeg', alt: 'Slide 8' },
+	{ src: '/assets/prez/slide-9.jpeg', alt: 'Slide 9' },
+	{ src: '/assets/prez/slide-10.jpeg',alt: 'Slide 10' },
+];
+---
+
+<BaseLayout
+	title="Présentation PME | Jughurta Gahlouz"
+	description="L'Automatisation au Service des PME — Gagner du temps, réduire les coûts, libérer les équipes."
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-12">
+			<Hero title="Présentation" tagline="L'Automatisation au Service des PME" align="center" />
+
+			<section class="carousel-section">
+				<div class="carousel">
+					<div class="carousel-track" id="carousel-track">
+						{slides.map((slide, i) => (
+							<div class="carousel-slide" data-index={i}>
+								<img src={slide.src} alt={slide.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+							</div>
+						))}
+					</div>
+					<button class="carousel-btn prev" id="prev-btn" aria-label="Slide précédente">&#8592;</button>
+					<button class="carousel-btn next" id="next-btn" aria-label="Slide suivante">&#8594;</button>
+					<div class="carousel-counter" id="carousel-counter">1 / {slides.length}</div>
+				</div>
+
+				<div class="carousel-dots" id="carousel-dots">
+					{slides.map((_, i) => (
+						<button class:list={['dot', { active: i === 0 }]} data-index={i} aria-label={`Aller à la slide ${i + 1}`} />
+					))}
+				</div>
+
+				<a href={gammaUrl} target="_blank" rel="noopener" class="cta-btn">
+					Voir la présentation complète →
+				</a>
+			</section>
+
+			<section class="points-section">
+				<h3 class="points-title">Ce que couvre cette présentation</h3>
+				<div class="points-grid">
+					<div class="point-card">
+						<span class="point-icon">⏱️</span>
+						<h4>Gain de temps</h4>
+						<p>Automatiser les tâches répétitives pour que vos équipes se concentrent sur l'essentiel.</p>
+					</div>
+					<div class="point-card">
+						<span class="point-icon">💸</span>
+						<h4>Réduction des coûts</h4>
+						<p>Moins d'erreurs humaines, moins de ressources gaspillées, plus de rentabilité.</p>
+					</div>
+					<div class="point-card">
+						<span class="point-icon">🤖</span>
+						<h4>IA au service des PME</h4>
+						<p>Des outils concrets comme n8n, Claude et Make accessibles sans expertise technique.</p>
+					</div>
+					<div class="point-card">
+						<span class="point-icon">🚀</span>
+						<h4>Mise en œuvre rapide</h4>
+						<p>Des workflows opérationnels en quelques jours, pas en plusieurs mois.</p>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA title="Intéressé par une collaboration ?" cta="Envoyer un message" />
+	</div>
+</BaseLayout>
+
+<script>
+	const track = document.getElementById('carousel-track')!;
+	const dots = document.querySelectorAll<HTMLButtonElement>('.dot');
+	const counter = document.getElementById('carousel-counter')!;
+	const total = dots.length;
+	let current = 0;
+
+	function goTo(index: number) {
+		current = (index + total) % total;
+		track.style.transform = `translateX(-${current * 100}%)`;
+		dots.forEach((d, i) => d.classList.toggle('active', i === current));
+		counter.textContent = `${current + 1} / ${total}`;
+	}
+
+	document.getElementById('prev-btn')!.addEventListener('click', () => goTo(current - 1));
+	document.getElementById('next-btn')!.addEventListener('click', () => goTo(current + 1));
+	dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'ArrowLeft') goTo(current - 1);
+		if (e.key === 'ArrowRight') goTo(current + 1);
+	});
+	let touchStartX = 0;
+	track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+	track.addEventListener('touchend', (e) => {
+		const diff = touchStartX - e.changedTouches[0].clientX;
+		if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+	});
+</script>
+
+<style>
+	main :global(.title) { font-size: var(--text-xl); }
+	main :global(.tagline) { font-size: var(--text-sm); color: var(--gray-300); text-align: center; }
+	@media (min-width: 50em) { main :global(.title) { font-size: var(--text-2xl); } }
+
+	.carousel-section { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+	.carousel { position: relative; width: 100%; max-width: 56rem; border-radius: 1.25rem; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--gray-900); }
+	.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+	.carousel-slide { min-width: 100%; aspect-ratio: 16 / 9; background: #0d0d0d; display: flex; align-items: center; justify-content: center; }
+	.carousel-slide img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 0.5rem; }
+
+	.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); color: #fff; border: none; border-radius: 50%; width: 2.5rem; height: 2.5rem; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; z-index: 10; backdrop-filter: blur(4px); }
+	.carousel-btn:hover { background: rgba(0,0,0,0.8); transform: translateY(-50%) scale(1.1); }
+	.prev { left: 0.75rem; }
+	.next { right: 0.75rem; }
+
+	.carousel-counter { position: absolute; bottom: 0.6rem; right: 0.85rem; background: rgba(0,0,0,0.5); color: #fff; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999rem; backdrop-filter: blur(4px); font-family: var(--font-brand); }
+
+	.carousel-dots { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+	.dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; border: none; background: var(--gray-600); cursor: pointer; padding: 0; transition: background 0.2s ease, transform 0.2s ease; }
+	.dot.active { background: var(--accent-regular); transform: scale(1.4); }
+
+	.cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; border-radius: 999rem; background: var(--accent-regular); color: var(--accent-text-over); font-family: var(--font-brand); font-weight: 600; font-size: var(--text-sm); text-decoration: none; transition: background var(--theme-transition), transform 0.2s ease; box-shadow: var(--shadow-md); }
+	.cta-btn:hover, .cta-btn:focus { background: var(--accent-dark); transform: translateY(-2px); }
+
+	.points-section { display: flex; flex-direction: column; gap: 2rem; }
+	.points-title { font-size: var(--text-xl); color: var(--gray-0); text-align: center; }
+	.points-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+	.point-card { background: var(--gray-999); border: 1px solid var(--gray-800); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color var(--theme-transition), transform 0.2s ease; }
+	.point-card:hover { border-color: var(--accent-regular); transform: translateY(-3px); }
+	.point-icon { font-size: 1.75rem; }
+	.point-card h4 { font-size: var(--text-md); color: var(--gray-0); margin: 0; }
+	.point-card p { font-size: var(--text-sm); color: var(--gray-300); margin: 0; line-height: 1.6; }
+
+	@media (min-width: 50em) {
+		.points-grid { grid-template-columns: repeat(4, 1fr); }
+		.points-title { font-size: var(--text-2xl); }
+		.carousel-btn { width: 3rem; height: 3rem; font-size: 1.3rem; }
+	}
+	@media (max-width: 30em) { .points-grid { grid-template-columns: 1fr; } }
+</style>

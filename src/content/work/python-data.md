@@ -1,10 +1,13 @@
 ---
 title: Python Data Science Learning Project
+title_fr: Projet Data Science Python
 publishDate: 2020-03-02 00:00:00
 img: /assets/python-data-science.png
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
   Python data science learning project.
+description_fr: |
+  Projet d'apprentissage Python pour la data science — structures de données, POO, NumPy, Pandas, Matplotlib et visualisation.
 tags:
   - Data
   - Dev
